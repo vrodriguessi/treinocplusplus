@@ -4,12 +4,12 @@ using namespace std;
 struct Brinquedo{
 		string nomeBrinquedo;
 		int qtdeDisponivel;
-		int qtdeRequerida = 0;
+		int qtdeRequerida;
 };
 
 struct Carta{
 		string nome;
-		Brinquedo brinquedoPedido;
+		string brinquedoPedido;
 };
 
 int main (){
@@ -18,7 +18,7 @@ int main (){
 		Carta cartasDasCriancas[numeroDeCartas];
 
 		for(int i = 0; i < numeroDeCartas; i++){
-				cin>>cartasDasCriancas[i].nome>>cartasDasCriancas[i].brinquedoPedido.nomeBrinquedo;
+				cin>>cartasDasCriancas[i].nome>>cartasDasCriancas[i].brinquedoPedido;
 		}
 
 		int qtdeBrinquedos;
@@ -26,12 +26,13 @@ int main (){
 		Brinquedo brinquedosDoPapaiNoel[qtdeBrinquedos];
 		for(int j = 0; j < qtdeBrinquedos; j++){
 				cin>>brinquedosDoPapaiNoel[j].nomeBrinquedo>>brinquedosDoPapaiNoel[j].qtdeDisponivel;
+				brinquedosDoPapaiNoel[j].qtdeRequerida = 0;
 		}
 
 		int index = 0;
-		while(index<numeroDeCartas){
+		while(index < numeroDeCartas){
 			for(int a = 0; a < qtdeBrinquedos; a++){
-			if(brinquedosDoPapaiNoel[a].nomeBrinquedo==cartasDasCriancas[index].brinquedoPedido.nomeBrinquedo){
+			if(brinquedosDoPapaiNoel[a].nomeBrinquedo==cartasDasCriancas[index].brinquedoPedido){
 				brinquedosDoPapaiNoel[a].qtdeRequerida+=1;
 			}
 		}
@@ -39,7 +40,7 @@ int main (){
 	}
 
 		for(int i = 0; i < qtdeBrinquedos; i++){
-				if(brinquedosDoPapaiNoel[i].qtdeRequerida>brinquedosDoPapaiNoel[i].qtdeDisponivel)
+				if(brinquedosDoPapaiNoel[i].qtdeRequerida > brinquedosDoPapaiNoel[i].qtdeDisponivel)
 				cout<<brinquedosDoPapaiNoel[i].nomeBrinquedo<<" ";
 		}
 
